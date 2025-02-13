@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            margin: 50px auto;
+            max-width: 90%;
+        }
+        h1 {
+            color: #ff4500;
+            font-size: 8vw;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% { text-shadow: 0 0 5px #ff4500; }
+            100% { text-shadow: 0 0 20px #ff6347; }
+        }
+        .message {
+            font-size: 4vw;
+            color: #333;
+            margin: 20px;
+        }
+        .cake {
+            font-size: 15vw;
+            animation: bounce 1s infinite alternate;
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-10px); }
+        }
+        .image img {
+            width: 80%;
+            max-width: 250px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .hbd-design {
+            font-size: 2vw;
+            font-weight: bold;
+            color: #ff4500;
+            text-shadow: 2px 2px 10px #ff6347;
+            margin-top: 20px;
+            animation: glow 1.5s infinite alternate;
+        }
+        .gift-container {
+            margin-top: 30px;
+        }
+        .gift-button {
+            background-color: #ff4500;
+            color: white;
+            padding: 12px 24px;
+            font-size: 4vw;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            animation: bounce 1s infinite alternate;
+        }
+
+        .gift-button:hover {
+            background-color: #ff6347;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 3vw;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            animation: fadeIn 0.5s ease-in-out;
+            border: 5px solid #ff4500;
+            background: linear-gradient(to right, #ffe692, #f9e9b5);
+            width: 80%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto; /* Enables scrolling */
+            scrollbar-width: none; /* Hides scrollbar in Firefox */
+            -ms-overflow-style: none;
+        }
+
+        .popup::-webkit-scrollbar {
+         display: none;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .gift-box {
+            font-size: 10vw;
+            margin-top: 15px;
+            animation: bounce 1s infinite alternate;
+            cursor: pointer;
+        }
+        .hidden-image {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+    <script>
+        function toggleGift() {
+            var popup = document.getElementById('giftPopup');
+            if (popup.style.display === 'block') {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'block';
+                document.addEventListener('click', closePopupOutside);
+            }
+        }
+        function closePopupOutside(event) {
+            var popup = document.getElementById('giftPopup');
+            var giftButton = document.querySelector('.gift-button');
+            if (!popup.contains(event.target) && event.target !== giftButton) {
+                popup.style.display = 'none';
+                document.removeEventListener('click', closePopupOutside);
+            }
+        }
+        // function toggleImage() {
+        //     var hiddenImg = document.getElementById('hiddenImage');
+        //     hiddenImg.style.display = hiddenImg.style.display === 'block' ? 'none' : 'block';
+        // }
+
+        function toggleImage() {
+    var giftBox = document.querySelector('.gift-box');
+    var hiddenImg = document.getElementById('hiddenImage');
+
+    if (hiddenImg.style.display === 'none' || hiddenImg.style.display === '') {
+        hiddenImg.style.display = 'block';
+        giftBox.style.display = 'none'; // Hide the gift box
+    }
+}
+
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Birthday, Chela! 🎉</h1>
+        <div class="cake">🎂</div>
+        <p class="message">Wishing you all the success, happiness, and blessings in the world. May your dreams come true and your journey be filled with joy!</p>
+        <div class="gift-container">
+            <button class="gift-button" onclick="toggleGift()"> 🎁</button>
+        </div>
+        <div id="giftPopup" class="popup">
+            <p>Wishing you a day full of laughter, love, and unforgettable moments!</p>
+            <div class="image">
+                <img src="chela.jpg" alt="Birthday Image">
+            </div>
+            <div class="hbd-design">✨ Happy Birthday, Chele! 🎊✨</div>
+            <div class="gift-box" onclick="toggleImage()">🎁😜</div>
+            <div id="hiddenImage" class="hidden-image">
+                <img src="s.jpg" alt="Special Gift" style="width: 80%; max-width: 200px;">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
